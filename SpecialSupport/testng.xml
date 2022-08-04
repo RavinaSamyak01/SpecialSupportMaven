@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="STAGING:Support">
+	<test thread-count="5" name="NetAgentSupport">
+		<classes>
+			<class name="NetAgentSupport.NASupport"></class>
+		</classes>
+	</test>
+
+	<test thread-count="5" name="NetShipSupport">
+		<classes>
+			<class name="NetShipSupport.NSSupport"></class>
+		</classes>
+	</test>
+	<!-- NASmoke -->
+</suite> <!-- NASuite -->
