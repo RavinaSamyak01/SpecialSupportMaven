@@ -92,6 +92,7 @@ public class BaseInit {
 				String Passoword = storage.getProperty("PREPRODPasswordNA");
 				Driver.findElement(By.id("supinputPassword")).clear();
 				Driver.findElement(By.id("supinputPassword")).sendKeys(Passoword);
+				
 			} catch (Exception e) {
 				msg.append("Unable to open login page" + "\n");
 				getscreenshot("NALoginIssue");
@@ -102,7 +103,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NALoginIssue.jpg";
 				try {
 
-					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com", subject,
 							msg.toString(), File);
 
 				} catch (Exception ex) {
@@ -133,7 +134,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NALoginIssue.jpg";
 				try {
 
-					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com", subject,
 							msg.toString(), File);
 
 				} catch (Exception ex) {
@@ -164,7 +165,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NALoginIssue.jpg";
 				try {
 
-					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com", subject,
 							msg.toString(), File);
 
 				} catch (Exception ex) {
@@ -195,7 +196,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NALoginIssue.jpg";
 				try {
 
-					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com", subject,
 							msg.toString(), File);
 
 				} catch (Exception ex) {
@@ -245,7 +246,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NSLoginIssue.jpg";
 				try {
 
-					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com", subject,
 							msg.toString(), File);
 
 				} catch (Exception ex) {
@@ -276,7 +277,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NSLoginIssue.jpg";
 				try {
 
-					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com", subject,
 							msg.toString(), File);
 
 				} catch (Exception ex) {
@@ -305,7 +306,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NSLoginIssue.jpg";
 				try {
 
-					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com", subject,
 							msg.toString(), File);
 
 				} catch (Exception ex) {
@@ -334,7 +335,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NSLoginIssue.jpg";
 				try {
 
-					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com", subject,
 							msg.toString(), File);
 
 				} catch (Exception ex) {

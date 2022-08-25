@@ -37,7 +37,7 @@ public class NASupport extends BaseInit {
 				msg.append("Validation Message is display.\n\n" + Message1 + "\n\n");
 				getscreenshot("NALogin_With_Validation_Message");
 			} catch (Exception waittt) {
-				WebDriverWait waitNew = new WebDriverWait(Driver, 50);
+				WebDriverWait waitNew = new WebDriverWait(Driver, 120);
 				waitNew.until(ExpectedConditions.visibilityOfElementLocated(By.id("l_message")));
 				Message1 = Driver.findElement(By.id("l_message")).getText();
 				System.out.println("Validation Message is display.\n\n" + Message1 + "\n\n");
@@ -93,6 +93,18 @@ public class NASupport extends BaseInit {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("btnProceed")));
 			WebDriverWait waitLoad = new WebDriverWait(Driver, 150);
 			waitLoad.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			try {
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
+
+			} catch (Exception ee) {
+				WebDriverWait waitLoad1 = new WebDriverWait(Driver, 120);
+				waitLoad1.until(
+						ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				waitLoad1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
+
+			}
 
 			System.out.println("**********Net Agent Information Popup**********\n\n");
 			msg.append("**********Net Agent Information Popup**********\n\n");
