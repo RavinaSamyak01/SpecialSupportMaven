@@ -89,8 +89,12 @@ public class NASupport extends BaseInit {
 			}
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnProceed")));
-			Driver.findElement(By.id("btnProceed")).click();
+			WebElement Login = Driver.findElement(By.id("btnProceed"));
+			act.moveToElement(Login).build().perform();
+			js.executeScript("arguments[0].click();", Login);
+			System.out.println("Clicked on Login button");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("btnProceed")));
+			waitForPageLoad();
 			WebDriverWait waitLoad = new WebDriverWait(Driver, 150);
 			waitLoad.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -99,7 +103,7 @@ public class NASupport extends BaseInit {
 				wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 
 			} catch (Exception ee) {
-				WebDriverWait waitLoad1 = new WebDriverWait(Driver, 120);
+				WebDriverWait waitLoad1 = new WebDriverWait(Driver, 150);
 				waitLoad1.until(
 						ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				waitLoad1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));

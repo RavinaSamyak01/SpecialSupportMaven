@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,6 +19,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
@@ -47,7 +49,7 @@ public class BaseInit {
 		options.addArguments("--disable-extensions");
 		options.addArguments("--no-sandbox");
 		// options.addArguments("--start-maximized");
-		//options.addArguments("window-size=1920,1200");
+		// options.addArguments("window-size=1920,1200");
 		capabilities.setPlatform(Platform.ANY);
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		Driver = new ChromeDriver(options);
@@ -59,7 +61,7 @@ public class BaseInit {
 		System.out.println("Current width: " + width);
 		System.out.println("window size==" + Driver.manage().window().getSize());
 
-		//1616,916
+		// 1616,916
 		/*
 		 * // Set new size Dimension newDimension = new Dimension(1366, 788);
 		 * Driver.manage().window().setSize(newDimension);
@@ -372,6 +374,16 @@ public class BaseInit {
 	public void end() {
 		Driver.close();
 		Driver.quit();
+	}
+
+	public static void waitForPageLoad() {
+		WebDriverWait wait = new WebDriverWait(Driver, 50);
+		JavascriptExecutor js = (JavascriptExecutor) Driver;
+		wait.until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return ((JavascriptExecutor) Driver).executeScript("return document.readyState").equals("complete");
+			}
+		});
 	}
 
 }
