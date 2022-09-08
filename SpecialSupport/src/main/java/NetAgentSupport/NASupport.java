@@ -90,8 +90,11 @@ public class NASupport extends BaseInit {
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnProceed")));
 			WebElement Login = Driver.findElement(By.id("btnProceed"));
-			act.moveToElement(Login).build().perform();
-			js.executeScript("arguments[0].click();", Login);
+			Driver.findElement(By.id("btnProceed")).click();
+			/*
+			 * act.moveToElement(Login).build().perform();
+			 * js.executeScript("arguments[0].click();", Login);
+			 */
 			System.out.println("Clicked on Login button");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("btnProceed")));
 			waitForPageLoad();

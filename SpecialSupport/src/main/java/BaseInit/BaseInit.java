@@ -48,6 +48,9 @@ public class BaseInit {
 		options.addArguments("--proxy-bypass-list=*");
 		options.addArguments("--disable-extensions");
 		options.addArguments("--no-sandbox");
+		options.addArguments("enable-automation");
+		options.addArguments("--dns-prefetch-disable");
+		options.addArguments("--disable-gpu");
 		// options.addArguments("--start-maximized");
 		// options.addArguments("window-size=1920,1200");
 		capabilities.setPlatform(Platform.ANY);
