@@ -98,8 +98,18 @@ public class NASupport extends BaseInit {
 			System.out.println("Clicked on Login button");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("btnProceed")));
 			waitForPageLoad();
-			WebDriverWait waitLoad = new WebDriverWait(Driver, 150);
-			waitLoad.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			
+			//--Wait for visibility of loader
+			try {
+				wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			} catch (Exception ee) {
+				WebDriverWait waitLoad1 = new WebDriverWait(Driver, 150);
+				waitLoad1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			}
+
+			//--Wait for invisibility of loader and visibility of welcomeContent
 
 			try {
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -137,8 +147,10 @@ public class NASupport extends BaseInit {
 			}
 
 			// Set new size
-			Dimension newDimension = new Dimension(1154, 708);
-			Driver.manage().window().setSize(newDimension);
+			/*
+			 * Dimension newDimension = new Dimension(1154, 708);
+			 * Driver.manage().window().setSize(newDimension);
+			 */
 
 			try {
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));

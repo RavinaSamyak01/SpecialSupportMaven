@@ -77,6 +77,20 @@ public class NSSupport extends BaseInit {
 			Driver.findElement(By.id("btnProceed")).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("btnProceed")));
 
+			// --Wait for visibility of loader
+			try {
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			} catch (Exception ee) {
+				WebDriverWait waitLoad1 = new WebDriverWait(Driver, 150);
+				waitLoad1.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			}
+
+			// --Wait for invisibility of loader and visibility of welcomeContent
+
 			try {
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				WebDriverWait waitLoad = new WebDriverWait(Driver, 150);
@@ -89,6 +103,7 @@ public class NSSupport extends BaseInit {
 						ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			}
+
 			System.out.println("**********Net Ship Information Popup**********\n\n");
 			msg1.append("**********Net Ship Information Popup**********\n\n");
 

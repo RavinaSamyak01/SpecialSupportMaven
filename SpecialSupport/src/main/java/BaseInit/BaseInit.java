@@ -63,6 +63,8 @@ public class BaseInit {
 		System.out.println("Current height: " + height);
 		System.out.println("Current width: " + width);
 		System.out.println("window size==" + Driver.manage().window().getSize());
+		
+		//Driver.manage().window().maximize();
 
 		// 1616,916
 		/*
