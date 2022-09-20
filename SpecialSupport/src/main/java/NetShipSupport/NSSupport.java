@@ -63,7 +63,7 @@ public class NSSupport extends BaseInit {
 		try {
 			Select opt = new Select(Driver.findElement(By.id("supdrpIMpopunit")));
 			Thread.sleep(2000);
-			opt.selectByIndex(2);
+			opt.selectByIndex(1);
 
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("img_profile")));
 			if (Driver.findElement(By.id("img_profile")).isEnabled() == true) {
@@ -77,18 +77,21 @@ public class NSSupport extends BaseInit {
 			Driver.findElement(By.id("btnProceed")).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("btnProceed")));
 
+			Thread.sleep(10000);
+
 			// --Wait for visibility of loader
-			try {
-				wait.until(ExpectedConditions
-						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-			} catch (Exception ee) {
-				WebDriverWait waitLoad1 = new WebDriverWait(Driver, 150);
-				waitLoad1.until(ExpectedConditions
-						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-			}
-
+			/*
+			 * try { wait.until(ExpectedConditions
+			 * .visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]"))
+			 * );
+			 * 
+			 * } catch (Exception ee) { WebDriverWait waitLoad1 = new WebDriverWait(Driver,
+			 * 150); waitLoad1.until(ExpectedConditions
+			 * .visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]"))
+			 * );
+			 * 
+			 * }
+			 */
 			// --Wait for invisibility of loader and visibility of welcomeContent
 
 			try {
