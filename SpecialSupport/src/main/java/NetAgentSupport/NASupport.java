@@ -97,22 +97,21 @@ public class NASupport extends BaseInit {
 			 */
 			System.out.println("Clicked on Login button");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("btnProceed")));
-			waitForPageLoad();
-			Thread.sleep(10000);
-			
-			/*
-			 * //--Wait for visibility of loader try {
-			 * wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
-			 * "//*[@class=\"ajax-loadernew\"]")));
-			 * 
-			 * } catch (Exception ee) { WebDriverWait waitLoad1 = new WebDriverWait(Driver,
-			 * 150);
-			 * waitLoad1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
-			 * "//*[@class=\"ajax-loadernew\"]")));
-			 * 
-			 * }
-			 */
-			//--Wait for invisibility of loader and visibility of welcomeContent
+			//waitForPageLoad();
+
+			// --Wait for visibility of loader
+			try {
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			} catch (Exception ee) {
+				WebDriverWait waitLoad1 = new WebDriverWait(Driver, 150);
+				waitLoad1.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			}
+
+			// --Wait for invisibility of loader and visibility of welcomeContent
 
 			try {
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -213,7 +212,9 @@ public class NASupport extends BaseInit {
 			System.out.println("============================================================\n\n");
 			msg.append("============================================================\n\n");
 
-		} catch (Exception E) {
+		} catch (
+
+		Exception E) {
 			Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, E);
 			System.out.println(E.getMessage());
 			System.out.println("There is no User for This Courier.");
