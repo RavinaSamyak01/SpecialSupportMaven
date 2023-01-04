@@ -171,8 +171,7 @@ public class NSSupport extends BaseInit {
 		String subject = "Selenium Automation Script: " + Env + " : Net Ship Support";
 		try {
 
-			Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
-					msg1.toString(), "");
+			Email.sendMail(EmailID, subject, msg.toString(), "");
 			/*
 			 * Email.sendMail(
 			 * "parth.doshi@samyak.com,ravina.prajapati@samyak.com,sdas@samyak.com,pgandhi@samyak.com,manthan.doshi@samyak.com,urvashi.Patel@samyak.com,bharat.bhutiya@samyak.com",

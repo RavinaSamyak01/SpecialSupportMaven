@@ -97,7 +97,7 @@ public class NASupport extends BaseInit {
 			 */
 			System.out.println("Clicked on Login button");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("btnProceed")));
-			//waitForPageLoad();
+			// waitForPageLoad();
 
 			// --Wait for visibility of loader
 			try {
@@ -229,8 +229,7 @@ public class NASupport extends BaseInit {
 
 		try {
 
-			Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
-					msg.toString(), "");
+			Email.sendMail(EmailID, subject, msg.toString(), "");
 
 		} catch (Exception ex) {
 			Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);

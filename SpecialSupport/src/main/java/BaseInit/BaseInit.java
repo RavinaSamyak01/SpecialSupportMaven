@@ -32,16 +32,18 @@ public class BaseInit {
 	public static StringBuilder msg = new StringBuilder();
 	public static WebDriver Driver;
 	public static Properties storage = new Properties();
+	public static String EmailID = storage.getProperty("MainEmailAddress");
 
 	@BeforeSuite
 	public void startup() throws AWTException, IOException {
+		System.out.println("MainEmailAddress " + EmailID);
 		storage = new Properties();
 		FileInputStream fi = new FileInputStream(".\\src\\main\\resources\\config.properties");
 		storage.load(fi);
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless", "--window-size=1920,1200");
+		// options.addArguments("--headless", "--window-size=1920,1200");
 		options.addArguments("--incognito");
 		options.addArguments("--test-type");
 		options.addArguments("--no-proxy-server");
@@ -63,8 +65,8 @@ public class BaseInit {
 		System.out.println("Current height: " + height);
 		System.out.println("Current width: " + width);
 		System.out.println("window size==" + Driver.manage().window().getSize());
-		
-		//Driver.manage().window().maximize();
+
+		// Driver.manage().window().maximize();
 
 		// 1616,916
 		/*
@@ -111,9 +113,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NALoginIssue.jpg";
 				try {
 
-					Email.sendMail(
-							"ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com",
-							subject, msg.toString(), File);
+					Email.sendMail(EmailID, subject, msg.toString(), File);
 
 				} catch (Exception ex) {
 					Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,9 +143,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NALoginIssue.jpg";
 				try {
 
-					Email.sendMail(
-							"ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com",
-							subject, msg.toString(), File);
+					Email.sendMail(EmailID, subject, msg.toString(), File);
 
 				} catch (Exception ex) {
 					Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);
@@ -175,9 +173,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NALoginIssue.jpg";
 				try {
 
-					Email.sendMail(
-							"ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com",
-							subject, msg.toString(), File);
+					Email.sendMail(EmailID, subject, msg.toString(), File);
 
 				} catch (Exception ex) {
 					Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);
@@ -207,9 +203,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NALoginIssue.jpg";
 				try {
 
-					Email.sendMail(
-							"ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com",
-							subject, msg.toString(), File);
+					Email.sendMail(EmailID, subject, msg.toString(), File);
 
 				} catch (Exception ex) {
 					Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);
@@ -258,9 +252,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NSLoginIssue.jpg";
 				try {
 
-					Email.sendMail(
-							"ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com",
-							subject, msg.toString(), File);
+					Email.sendMail(EmailID, subject, msg.toString(), File);
 
 				} catch (Exception ex) {
 					Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);
@@ -290,9 +282,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NSLoginIssue.jpg";
 				try {
 
-					Email.sendMail(
-							"ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com",
-							subject, msg.toString(), File);
+					Email.sendMail(EmailID, subject, msg.toString(), File);
 
 				} catch (Exception ex) {
 					Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);
@@ -320,9 +310,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NSLoginIssue.jpg";
 				try {
 
-					Email.sendMail(
-							"ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com",
-							subject, msg.toString(), File);
+					Email.sendMail(EmailID, subject, msg.toString(), File);
 
 				} catch (Exception ex) {
 					Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);
@@ -350,10 +338,7 @@ public class BaseInit {
 				String File = ".\\src\\main\\resources\\Screenshots\\NSLoginIssue.jpg";
 				try {
 
-					Email.sendMail(
-							"ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com, saurabh.jain@samyak.com, himanshu.dholakia@samyak.com",
-							subject, msg.toString(), File);
-
+					Email.sendMail(EmailID, subject, msg.toString(), File);
 				} catch (Exception ex) {
 					Logger.getLogger(NASupport.class.getName()).log(Level.SEVERE, null, ex);
 				}
