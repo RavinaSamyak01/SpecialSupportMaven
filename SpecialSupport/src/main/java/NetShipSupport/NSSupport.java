@@ -41,6 +41,25 @@ public class NSSupport extends BaseInit {
 			msg1.append("Validation Message is not Display.\n\n");
 		}
 
+		try {
+			wait.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//*[@id=\"txtCustomer\"][@readonly=\"readonly\"]")));
+			System.out.println("Customer is still disabled, SignIn button is not working");
+			msg1.append("Customer is still disabled, SignIn button is not working .\n\n");
+			getscreenshot("NSCustomerDisabled");
+			String Env = storage.getProperty("Env");
+			String subject = "Selenium Automation Script: " + Env + " : Netship Support";
+			String File = ".\\src\\main\\resources\\Screenshots\\NSCustomerDisabled.jpg";
+
+			Email.sendMail(EmailID, subject, msg.toString(), File);
+		} catch (Exception e) {
+			System.out.println("Customer is enabled, SignIn button is working");
+			msg1.append("Customer is enabled, SignIn button is working .\n\n");
+
+			Thread.sleep(2000);
+
+		}
+
 		String Env = storage.getProperty("Env");
 		String NSCustomer = null;
 		if (Env.equalsIgnoreCase("Pre-Prod")) {

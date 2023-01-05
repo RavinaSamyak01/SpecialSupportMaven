@@ -46,10 +46,31 @@ public class NASupport extends BaseInit {
 			}
 
 		} catch (Exception e) {
+
 			System.out.println("Validation Message is not Display.\n\n");
 			msg.append("Validation Message is not Display.\n\n");
 			System.out.println("============================================================\n\n");
 			msg.append("============================================================\n\n");
+		}
+
+		try {
+			wait.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//*[@id=\"supinputCourier\"][@readonly=\"readOnly\"]")));
+			System.out.println("Courier is still disabled, SignIn button is not working");
+			msg.append("Courier is still disabled, SignIn button is not working .\n\n");
+			getscreenshot("NACourierDisabled");
+
+			String Env = storage.getProperty("Env");
+			String subject = "Selenium Automation Script: " + Env + " : Net Agent Support";
+			String File = ".\\src\\main\\resources\\Screenshots\\NACourierDisabled.jpg";
+
+			Email.sendMail(EmailID, subject, msg.toString(), File);
+		} catch (Exception e) {
+			System.out.println("Courier is enabled, SignIn button is working");
+			msg.append("Courier is enabled, SignIn button is working .\n\n");
+
+			Thread.sleep(2000);
+
 		}
 
 		String Env = storage.getProperty("Env");

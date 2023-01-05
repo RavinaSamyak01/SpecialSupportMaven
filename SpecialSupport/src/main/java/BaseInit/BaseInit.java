@@ -24,6 +24,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import java.util.ResourceBundle;
 
 import NetAgentSupport.NASupport;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -32,7 +33,8 @@ public class BaseInit {
 	public static StringBuilder msg = new StringBuilder();
 	public static WebDriver Driver;
 	public static Properties storage = new Properties();
-	public static String EmailID = storage.getProperty("MainEmailAddress");
+	public static ResourceBundle rb = ResourceBundle.getBundle("config");
+	public static String EmailID = rb.getString("MainEmailAddress");
 
 	@BeforeSuite
 	public void startup() throws AWTException, IOException {
@@ -43,7 +45,7 @@ public class BaseInit {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
-		// options.addArguments("--headless", "--window-size=1920,1200");
+		options.addArguments("--headless", "--window-size=1920,1200");
 		options.addArguments("--incognito");
 		options.addArguments("--test-type");
 		options.addArguments("--no-proxy-server");
@@ -213,11 +215,24 @@ public class BaseInit {
 
 		}
 		Thread.sleep(2000);
-		Driver.findElement(By.id("supidsigninbutton")).click();
-		msg.append("Successfully clicked on SignIn .\n\n");
-		Thread.sleep(2000);
-		Driver.findElement(By.id("btnProceed")).click();
-		msg.append("Successfully clicked on Proceed button .\n\n");
+		try {
+			Driver.findElement(By.id("supidsigninbutton")).click();
+			msg.append("Successfully clicked on SignIn .\n\n");
+			Thread.sleep(2000);
+			Driver.findElement(By.id("btnProceed")).click();
+			msg.append("Successfully clicked on Proceed button .\n\n");
+
+		} catch (Exception e) {
+			msg.append("SignIn button is not working .\n\n");
+			Thread.sleep(2000);
+			getscreenshot("NASignInIssue");
+			Env = storage.getProperty("Env");
+			String subject = "Selenium Automation Script: " + Env + " : Net Agent Support";
+			String File = ".\\src\\main\\resources\\Screenshots\\NASignInIssue.jpg";
+
+			Email.sendMail(EmailID, subject, msg.toString(), File);
+
+		}
 
 	}
 
@@ -345,13 +360,25 @@ public class BaseInit {
 			}
 		}
 		Thread.sleep(2000);
+		try {
+			Driver.findElement(By.id("btnSignIn")).click();
+			Thread.sleep(2000);
+			msg.append("Successfully clicked on SignIn .\n\n");
+			Driver.findElement(By.id("btnProceed")).click();
+			Thread.sleep(2000);
+			msg.append("Successfully clicked on Proceed button .\n\n");
+		} catch (Exception e) {
+			msg.append("SignIn button is not working .\n\n");
+			Thread.sleep(2000);
+			getscreenshot("NSSignInIssue");
 
-		Driver.findElement(By.id("btnSignIn")).click();
-		Thread.sleep(2000);
-		msg.append("Successfully clicked on SignIn .\n\n");
-		Driver.findElement(By.id("btnProceed")).click();
-		Thread.sleep(2000);
-		msg.append("Successfully clicked on Proceed button .\n\n");
+			Env = storage.getProperty("Env");
+			String subject = "Selenium Automation Script: " + Env + " : Net Ship Support";
+			String File = ".\\src\\main\\resources\\Screenshots\\NSSignInIssue.jpg";
+
+			Email.sendMail(EmailID, subject, msg.toString(), File);
+
+		}
 
 	}
 
